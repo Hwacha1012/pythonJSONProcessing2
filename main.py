@@ -15,6 +15,13 @@ with open('dm-users-21.json') as json_data:
     #data = data_dict.decode()
 #test = ast.literal_eval(json.dumps(data_dict))
 
+with open('dm-users-matches-21.json') as json_data2:
+    data_dict2 = json.load(json_data2)
+    #print(data_dict)
+    print(type(data_dict2))
+    #data = data_dict.decode()
+#test = ast.literal_eval(json.dumps(data_dict))
+
 def parse_webhook(webhook_data):
 
     """
@@ -24,9 +31,58 @@ def parse_webhook(webhook_data):
 
     data = ast.literal_eval(str(webhook_data))
     return data
-convertedData = parse_webhook(data_dict)
+convertedUserData = parse_webhook(data_dict)
+convertedMatchData = parse_webhook(data_dict2)
+
+
+
+responses = [];
+users = [];
+matches = [];
+#matchesAvg = [];
+usersNew = [];
+for key in convertedUserData:
+    #print(key)
+   if (convertedUserData.get(key).get('college') == 'Harvard'):
+       #responses.append(convertedUserData.get(key).get('responses'))
+       users.append(key)
+    #print(type(x))
+    #if i.get('college') == 'Harvard':
+     #   print(i)
+print(len(users))
+#print(len(responses))
+
+#print(convertedMatchData).get('32411')
+#print(convertedMatchData).get('32412')
+
+for key2 in users:
+    #print(key)
+    #print(type(convertedMatchData.get(key2)))
+    if convertedMatchData.get(key2) is not None:
+        temp = convertedMatchData.get(key2).get('ratings')
+        usersNew.append(key2)
+        if len(temp) > 0:
+            matches.append((sum(temp) / len(temp)))
+        else:
+            matches.append(None)
+
+
+print(len(matches))
+
+#print(matches)
+
+for key3 in usersNew:
+    responses.append(convertedUserData.get(key3).get('responses'))
+    #users.append(key)
+
+print(len(responses))
+#print(matches)
 #print(convertedData)
 #print(type(test))
+
+
+
+
 
 
 
@@ -61,15 +117,5 @@ def convert_keys_to_string(dictionary):
 #convertedData = json.loads(data_dict.replace("'", "\""))
 
 #convertedData = ast.literal_eval(data_dict)
-
-test = [];
-for key in convertedData:
-    #print(key)
-   if (convertedData.get(key).get('college') == 'Harvard'):
-       test.append(key)
-    #print(type(x))
-    #if i.get('college') == 'Harvard':
-     #   print(i)
-print(test)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
