@@ -45,6 +45,7 @@ convertedMatchData = parse_webhook(data_dict2)
 responses = [];
 users = [];
 matches = [];
+numMatches = [];
 #matchesAvg = [];
 usersNew = [];
 for key in convertedUserData:
@@ -52,6 +53,7 @@ for key in convertedUserData:
    if (convertedUserData.get(key).get('college') == curr_School and convertedUserData.get(key).get('responses') is not None):
        #responses.append(convertedUserData.get(key).get('responses'))
        users.append(key)
+
     #print(type(x))
     #if i.get('college') == 'Harvard':
      #   print(i)
@@ -66,14 +68,19 @@ for key in users:
     #print(type(convertedMatchData.get(key2)))
     if convertedMatchData.get(key) is not None:
         temp = convertedMatchData.get(key).get('ratings')
+
         usersNew.append(key)
         if len(temp) > 0:
             matches.append((sum(temp) / len(temp)))
         else:
             matches.append(None)
+        if convertedMatchData.get(key).get('matches') is not None:
+            numMatches.append(convertedMatchData.get(key).get('matches'))
 
 
 print(len(matches))
+print("here")
+print(len(numMatches))
 
 #print(matches)
 
@@ -103,6 +110,17 @@ questionResults8 = []
 questionResults9 = []
 questionResults10 = []
 
+matchesResults1 = []
+matchesResults2 = []
+matchesResults3 = []
+matchesResults4 = []
+matchesResults5 = []
+matchesResults6 = []
+matchesResults7 = []
+matchesResults8 = []
+matchesResults9 = []
+matchesResults10 = []
+
 #test2 = 2
 #print(responses)
 #for question in range(test2):
@@ -110,7 +128,7 @@ for question in range(numQuestions):
 
     rows2, cols2 = (5, 0)
     questionResponsesMatch = [[0] * cols2] * rows2
-    print(questionResponsesMatch)
+    #print(questionResponsesMatch)
 
     array0 = []
     array1 = []
@@ -118,22 +136,34 @@ for question in range(numQuestions):
     array3 = []
     array4 = []
 
+    array5 = []
+    array6 = []
+    array7 = []
+    array8 = []
+    array9 = []
+
+
     for index, user in enumerate(responses):
         if user is not None and type(user) is not dict:
             #print(type(user))
-            print(user)
+            #print(user)
             if len(user) < question+1:
                 print("user[question] is None")
             elif user[question] == 0:
                 array0.append(matches[index])
+                array5.append(numMatches[index])
             elif user[question] == 1:
                 array1.append(matches[index])
+                array6.append(numMatches[index])
             elif user[question] == 2:
                 array2.append(matches[index])
+                array7.append(numMatches[index])
             elif user[question] == 3:
                 array3.append(matches[index])
+                array8.append(numMatches[index])
             elif user[question] == 4:
                 array4.append(matches[index])
+                array9.append(numMatches[index])
                 #questionResponsesMatch[user[question]].append(user[question])
                 #print(user[question])
 
@@ -144,70 +174,138 @@ for question in range(numQuestions):
     array3 = list(filter(None, array3))
     array4 = list(filter(None, array4))
 
-    print(array0)
-    print(sum(array0)/len(array0))
-    print(array1)
-    print(sum(array1)/len(array1))
+    array5 = list(filter(None, array5))
+    array6 = list(filter(None, array6))
+    array7 = list(filter(None, array7))
+    array8 = list(filter(None, array8))
+    array9 = list(filter(None, array9))
+
+   # print(array0)
+    #print(sum(array0)/len(array0))
+    #print(array1)
+    #print(sum(array1)/len(array1))
     if question == 0:
         questionResults1.append(sum(array0) / len(array0))
         questionResults1.append(sum(array1) / len(array1))
         questionResults1.append(sum(array2) / len(array2))
         questionResults1.append(sum(array3) / len(array3))
         questionResults1.append(sum(array4) / len(array4))
+
+        matchesResults1.append(sum(array5) / len(array5))
+        matchesResults1.append(sum(array6) / len(array6))
+        matchesResults1.append(sum(array7) / len(array7))
+        matchesResults1.append(sum(array8) / len(array8))
+        matchesResults1.append(sum(array9) / len(array9))
+
     elif question == 1:
         questionResults2.append(sum(array0) / len(array0))
         questionResults2.append(sum(array1) / len(array1))
         questionResults2.append(sum(array2) / len(array2))
         questionResults2.append(sum(array3) / len(array3))
         questionResults2.append(sum(array4) / len(array4))
+
+        matchesResults2.append(sum(array5) / len(array5))
+        matchesResults2.append(sum(array6) / len(array6))
+        matchesResults2.append(sum(array7) / len(array7))
+        matchesResults2.append(sum(array8) / len(array8))
+        matchesResults2.append(sum(array9) / len(array9))
+
     elif question == 2:
         questionResults3.append(sum(array0) / len(array0))
         questionResults3.append(sum(array1) / len(array1))
         questionResults3.append(sum(array2) / len(array2))
         questionResults3.append(sum(array3) / len(array3))
         questionResults3.append(sum(array4) / len(array4))
+
+        matchesResults3.append(sum(array5) / len(array5))
+        matchesResults3.append(sum(array6) / len(array6))
+        matchesResults3.append(sum(array7) / len(array7))
+        matchesResults3.append(sum(array8) / len(array8))
+        matchesResults3.append(sum(array9) / len(array9))
     elif question == 3:
         questionResults4.append(sum(array0) / len(array0))
         questionResults4.append(sum(array1) / len(array1))
         questionResults4.append(sum(array2) / len(array2))
         questionResults4.append(sum(array3) / len(array3))
         questionResults4.append(sum(array4) / len(array4))
+
+        matchesResults4.append(sum(array5) / len(array5))
+        matchesResults4.append(sum(array6) / len(array6))
+        matchesResults4.append(sum(array7) / len(array7))
+        matchesResults4.append(sum(array8) / len(array8))
+        matchesResults4.append(sum(array9) / len(array9))
     elif question == 4:
         questionResults5.append(sum(array0) / len(array0))
         questionResults5.append(sum(array1) / len(array1))
         questionResults5.append(sum(array2) / len(array2))
         questionResults5.append(sum(array3) / len(array3))
         questionResults5.append(sum(array4) / len(array4))
+
+        matchesResults5.append(sum(array5) / len(array5))
+        matchesResults5.append(sum(array6) / len(array6))
+        matchesResults5.append(sum(array7) / len(array7))
+        matchesResults5.append(sum(array8) / len(array8))
+        matchesResults5.append(sum(array9) / len(array9))
     elif question == 5:
         questionResults6.append(sum(array0) / len(array0))
         questionResults6.append(sum(array1) / len(array1))
         questionResults6.append(sum(array2) / len(array2))
         questionResults6.append(sum(array3) / len(array3))
         questionResults6.append(sum(array4) / len(array4))
+
+        matchesResults6.append(sum(array5) / len(array5))
+        matchesResults6.append(sum(array6) / len(array6))
+        matchesResults6.append(sum(array7) / len(array7))
+        matchesResults6.append(sum(array8) / len(array8))
+        matchesResults6.append(sum(array9) / len(array9))
     elif question == 6:
         questionResults7.append(sum(array0) / len(array0))
         questionResults7.append(sum(array1) / len(array1))
         questionResults7.append(sum(array2) / len(array2))
         questionResults7.append(sum(array3) / len(array3))
         questionResults7.append(sum(array4) / len(array4))
+
+        matchesResults7.append(sum(array5) / len(array5))
+        matchesResults7.append(sum(array6) / len(array6))
+        matchesResults7.append(sum(array7) / len(array7))
+        matchesResults7.append(sum(array8) / len(array8))
+        matchesResults7.append(sum(array9) / len(array9))
     elif question == 7:
         questionResults8.append(sum(array0) / len(array0))
         questionResults8.append(sum(array1) / len(array1))
         questionResults8.append(sum(array2) / len(array2))
         questionResults8.append(sum(array3) / len(array3))
         questionResults8.append(sum(array4) / len(array4))
+
+        matchesResults8.append(sum(array5) / len(array5))
+        matchesResults8.append(sum(array6) / len(array6))
+        matchesResults8.append(sum(array7) / len(array7))
+        matchesResults8.append(sum(array8) / len(array8))
+        matchesResults8.append(sum(array9) / len(array9))
     elif question == 8:
         questionResults9.append(sum(array0) / len(array0))
         questionResults9.append(sum(array1) / len(array1))
         questionResults9.append(sum(array2) / len(array2))
         questionResults9.append(sum(array3) / len(array3))
         questionResults9.append(sum(array4) / len(array4))
+
+        matchesResults9.append(sum(array5) / len(array5))
+        matchesResults9.append(sum(array6) / len(array6))
+        matchesResults9.append(sum(array7) / len(array7))
+        matchesResults9.append(sum(array8) / len(array8))
+        matchesResults9.append(sum(array9) / len(array9))
     elif question == 9:
         questionResults10.append(sum(array0) / len(array0))
         questionResults10.append(sum(array1) / len(array1))
         questionResults10.append(sum(array2) / len(array2))
         questionResults10.append(sum(array3) / len(array3))
         questionResults10.append(sum(array4) / len(array4))
+
+        matchesResults10.append(sum(array5) / len(array5))
+        matchesResults10.append(sum(array6) / len(array6))
+        matchesResults10.append(sum(array7) / len(array7))
+        matchesResults10.append(sum(array8) / len(array8))
+        matchesResults10.append(sum(array9) / len(array9))
 '''
     for index, user in enumerate(responses):
         if user is not None and type(user) is not dict:
@@ -279,6 +377,20 @@ print(questionResults7)
 print(questionResults8)
 print(questionResults9)
 print(questionResults10)
+
+print('\n')
+
+print(matchesResults1)
+print(matchesResults2)
+print(matchesResults3)
+print(matchesResults4)
+print(matchesResults5)
+print(matchesResults6)
+print(matchesResults7)
+print(matchesResults8)
+print(matchesResults9)
+print(matchesResults10)
+
 
 
 
