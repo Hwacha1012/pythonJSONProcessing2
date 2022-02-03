@@ -7,6 +7,7 @@
 
 import json
 import ast
+import pandas as pd
 import collections;
 
 #change if using a different number of questions
@@ -390,6 +391,73 @@ print(matchesResults7)
 print(matchesResults8)
 print(matchesResults9)
 print(matchesResults10)
+
+value1 = []
+value2 = []
+value3 = []
+value4 = []
+value5 = []
+
+value1.append(matchesResults1[0])
+value1.append(matchesResults2[0])
+value1.append(matchesResults3[0])
+value1.append(matchesResults4[0])
+value1.append(matchesResults5[0])
+value1.append(matchesResults6[0])
+value1.append(matchesResults7[0])
+value1.append(matchesResults8[0])
+value1.append(matchesResults9[0])
+value1.append(matchesResults10[0])
+
+value2.append(matchesResults1[1])
+value2.append(matchesResults2[1])
+value2.append(matchesResults3[1])
+value2.append(matchesResults4[1])
+value2.append(matchesResults5[1])
+value2.append(matchesResults6[1])
+value2.append(matchesResults7[1])
+value2.append(matchesResults8[1])
+value2.append(matchesResults9[1])
+value2.append(matchesResults10[1])
+
+value3.append(matchesResults1[2])
+value3.append(matchesResults2[2])
+value3.append(matchesResults3[2])
+value3.append(matchesResults4[2])
+value3.append(matchesResults5[2])
+value3.append(matchesResults6[2])
+value3.append(matchesResults7[2])
+value3.append(matchesResults8[2])
+value3.append(matchesResults9[2])
+value3.append(matchesResults10[2])
+
+value4.append(matchesResults1[3])
+value4.append(matchesResults2[3])
+value4.append(matchesResults3[3])
+value4.append(matchesResults4[3])
+value4.append(matchesResults5[3])
+value4.append(matchesResults6[3])
+value4.append(matchesResults7[3])
+value4.append(matchesResults8[3])
+value4.append(matchesResults9[3])
+value4.append(matchesResults10[3])
+
+value5.append(matchesResults1[4])
+value5.append(matchesResults2[4])
+value5.append(matchesResults3[4])
+value5.append(matchesResults4[4])
+value5.append(matchesResults5[4])
+value5.append(matchesResults6[4])
+value5.append(matchesResults7[4])
+value5.append(matchesResults8[4])
+value5.append(matchesResults9[4])
+value5.append(matchesResults10[4])
+
+outputDict = {"Value1":value1,"Value2":value2,"Value3":value3,"Value4":value4,"Value5":value5}
+df = pd.DataFrame(outputDict)
+
+df.to_csv("{}MatchData.csv".format(curr_School), index=False)
+
 
 
 
